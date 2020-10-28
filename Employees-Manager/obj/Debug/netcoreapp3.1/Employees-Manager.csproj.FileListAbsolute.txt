@@ -363,3 +363,4 @@ E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Po
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Razor\Pages\Employees\Index.cshtml.g.cs
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Razor\Pages\Employees\Create.cshtml.g.cs
+E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\Vacation.cshtml.g.cs

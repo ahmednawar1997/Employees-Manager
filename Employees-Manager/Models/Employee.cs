@@ -21,6 +21,6 @@ namespace Employees_Manager.Models
         [Required]
         public DateTime Dob { get; set; }
 
-        public ICollection<Vacation> Vacations { get; set; }
+        public IList<Vacation> Vacations { get; set; }
     }
 }
