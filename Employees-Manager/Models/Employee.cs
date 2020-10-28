@@ -22,5 +22,7 @@ namespace Employees_Manager.Models
         public DateTime Dob { get; set; }
 
         public IList<Vacation> Vacations { get; set; }
+
+        public IList<Request> Requests { get; set; }
     }
 }
