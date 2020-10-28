@@ -2,12 +2,13 @@
 @model Employees_Manager.Pages.Employees.IndexModel
 @{
     ViewData["Title"] = "Employees";
-    ViewData["Title"] = "Employees";
 }
 
 <div class="container">
     <div class="row p-0 m-0">
-        <div class="col-9"><h2>Employees</h2></div>
+        <div class="col-6"><h2>Employees</h2></div>
+
+        <div class="col-3"><a asp-page="Requests" class="btn btn-outline-dark form-control text-black">Vacation Requests</a></div>
         <div class="col-3"><a asp-page="Create" class="btn btn-info form-control text-white">Add New Employee</a></div>
 
         <div class="col-12 border p-3 mt-3">
@@ -74,6 +75,13 @@
 </div>
 
 
+<!--------------------------------------------------Requests----------------------------------------------->
+
+
+
+<!--------------------------------------------------modal----------------------------------------------->
+
+
 <div class="modal fade" id="request_vacation_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -89,8 +97,8 @@
                     <input type="hidden" asp-for="Request.Employee.Id" class="form-control" id="request_employee_id" />
 
                     <div class="form-group">
-                        <label asp-for= "Request.Value">Value</label>
-                        <input type="number" asp-for="Request.Value" class="form-control" id="request_value" min="0" value="0"/>
+                        <label asp-for="Request.Value">Value</label>
+                        <input type="number" asp-for="Request.Value" class="form-control" id="request_value" min="0" value="0" />
                         <span asp-validation-for="Request.Value" class="text-danger"></span>
                     </div>
 

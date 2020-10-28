@@ -1,0 +1,61 @@
+﻿@page
+@model Employees_Manager.Pages.Employees.RequestsModel
+@{
+}
+
+
+
+<div class="container">
+    <div class="row p-0 m-0">
+        <div class="col-6"><h2>Requests</h2></div>
+        <div class="col-3"><a asp-page="Requests" class="btn btn-outline-dark form-control text-black">Vacation Requests</a></div>
+        <div class="col-3"><a asp-page="Create" class="btn btn-info form-control text-white">Add New Employee</a></div>
+
+        <div class="col-12 border p-3 mt-3">
+            @if (Model.Requests.Count() > 0)
+            {
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="Requests.FirstOrDefault().Vacation_Type"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Requests.FirstOrDefault().Value"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Requests.FirstOrDefault().Employee.Name"></label>
+                        </th>
+                        <th>
+                            <label></label>
+                        </th>
+                    </tr>
+
+                    @foreach (var req in Model.Requests)
+                    {
+                <tr>
+                    <td>
+                        @req.Vacation_Type
+                    </td>
+                    <td>
+                        @req.Value
+                    </td>
+                    <td>
+                        @req.Employee.Name
+                    </td>
+                    <td>
+                        <form class="d-inline-block" asp-page-handler="AcceptRequest" asp-route-req_id="@req.Request_Id" method="post">
+                            <button class="btn btn-info btn-sm" type="submit">Accept Request</button>
+                        </form>
+                    </td>
+                </tr>
+                    }
+
+                </table>
+            }
+            else
+            {
+                <h6>No Requests </h6>
+            }
+        </div>
+    </div>
+</div>
