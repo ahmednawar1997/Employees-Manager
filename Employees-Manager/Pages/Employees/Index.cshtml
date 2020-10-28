@@ -1,0 +1,62 @@
+﻿@page
+@model Employees_Manager.Pages.Employees.IndexModel
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<div class="container">
+    <div class="row p-0 m-0">
+        <div class="col-9"><h2>Employees</h2></div>
+        <div class="col-3"><a asp-page="Create" class="btn btn-info form-control text-white">Add New Employee</a></div>
+
+
+
+        <div class="col-12 border p-3 mt-3">
+            <form action="/" method="post">
+                @if (Model.Employees.Count() > 0)
+                {
+                    <table class="table table-striped border">
+                        <tr class="table-secondary">
+                            <th>
+                                <label asp-for="Employees.FirstOrDefault().Name"></label>
+                            </th>
+                            <th>
+                                <label asp-for="Employees.FirstOrDefault().Email"></label>
+                            </th>
+                            <th>
+                                <label asp-for="Employees.FirstOrDefault().Vacations"></label>
+                            </th>
+                        </tr>
+
+                        @foreach(var employee in Model.Employees)
+                        {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(name => employee.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(Email => employee.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(vacations => employee.Vacations)
+                        </td>
+                        <td>
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                            <a class="btn btn-secondary btn-sm text-white">Edit</a>
+                        </td>
+                    </tr>
+
+                        }
+
+
+
+                    </table>
+                }
+                else
+                {
+                    <h6>No Employees </h6>
+                }
+                </form>
+            </div>
+        </div>
+    </div>
