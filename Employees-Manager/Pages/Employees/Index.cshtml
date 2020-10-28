@@ -26,6 +26,9 @@
                             <th>
                                 <label asp-for="Employees.FirstOrDefault().Vacations"></label>
                             </th>
+                            <th>
+                                <label ></label>
+                            </th>
                         </tr>
 
                         @foreach(var employee in Model.Employees)
@@ -38,7 +41,19 @@
                             @Html.DisplayFor(Email => employee.Email)
                         </td>
                         <td>
-                            @Html.DisplayFor(vacations => employee.Vacations)
+
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Vacations
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                   @foreach(var vac in employee.Vacations)
+
+                                    {
+                                    <p class="dropdown-item">@vac.Vacation_Type Balance: @vac.Balance</p>
+                                    }
+                                </div>
+                            </div>
                         </td>
                         <td>
                             <button class="btn btn-danger btn-sm">Delete</button>

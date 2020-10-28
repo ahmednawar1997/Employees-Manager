@@ -19,10 +19,16 @@ namespace Employees_Manager.Pages.Employees
             this._db = _db;
         }
 
-        public IEnumerable<Employee> Employees{ get; set; }
+        public IList<Employee> Employees{ get; set; }
         public async Task OnGet()
         {
-            Employees = await _db.Employee.ToListAsync();
+
+            Employees = await _db.Employee.Include(emp => emp.Vacations).ToListAsync();
+            //Employees = await _db.Employee.ToListAsync();
+
+            System.Diagnostics.Debug.WriteLine(Employees.Count());
+            System.Diagnostics.Debug.WriteLine(Employees.ElementAt(0).Vacations.Count());
+
         }
     }
 }
