@@ -32,7 +32,7 @@ namespace Employees_Manager.Migrations
                     Vacation_Type = table.Column<string>(nullable: true),
                     Balance = table.Column<int>(nullable: false),
                     Used = table.Column<int>(nullable: false),
-                    EmployeeId = table.Column<int>(nullable: true)
+                    EmployeeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,7 +42,7 @@ namespace Employees_Manager.Migrations
                         column: x => x.EmployeeId,
                         principalTable: "Employee",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(

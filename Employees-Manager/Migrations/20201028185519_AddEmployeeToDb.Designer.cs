@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Employees_Manager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201028024205_AddEmployeeToDb")]
+    [Migration("20201028185519_AddEmployeeToDb")]
     partial class AddEmployeeToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,7 +49,7 @@ namespace Employees_Manager.Migrations
                     b.Property<int>("Balance")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EmployeeId")
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<int>("Used")
@@ -69,7 +69,9 @@ namespace Employees_Manager.Migrations
                 {
                     b.HasOne("Employees_Manager.Models.Employee", null)
                         .WithMany("Vacations")
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

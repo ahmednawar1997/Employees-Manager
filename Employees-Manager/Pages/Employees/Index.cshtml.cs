@@ -26,8 +26,8 @@ namespace Employees_Manager.Pages.Employees
             Employees = await _db.Employee.Include(emp => emp.Vacations).ToListAsync();
             //Employees = await _db.Employee.ToListAsync();
 
-            System.Diagnostics.Debug.WriteLine(Employees.Count());
-            System.Diagnostics.Debug.WriteLine(Employees.ElementAt(0).Vacations.Count());
+           //System.Diagnostics.Debug.WriteLine(Employees.Count());
+           // System.Diagnostics.Debug.WriteLine(Employees.ElementAt(0).Vacations.Count());
 
         }
     }

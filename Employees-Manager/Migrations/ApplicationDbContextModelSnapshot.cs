@@ -47,7 +47,7 @@ namespace Employees_Manager.Migrations
                     b.Property<int>("Balance")
                         .HasColumnType("int");
 
-                    b.Property<int?>("EmployeeId")
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
                     b.Property<int>("Used")
@@ -67,7 +67,9 @@ namespace Employees_Manager.Migrations
                 {
                     b.HasOne("Employees_Manager.Models.Employee", null)
                         .WithMany("Vacations")
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

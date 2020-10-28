@@ -15,7 +15,7 @@ namespace Employees_Manager.Models
         public int Balance { get; set; }
         public int Used { get; set; }
 
-        public Employee Employee { get; set; }
+        public int EmployeeId { get; set; }
 
 
 
