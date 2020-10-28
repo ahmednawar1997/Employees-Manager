@@ -25,7 +25,6 @@ namespace Employees_Manager.Pages.Employees
         {
 
             Employee = await _db.Employee.Include(emp => emp.Vacations).SingleOrDefaultAsync(i => i.Id == id);
-            System.Diagnostics.Debug.WriteLine(Employee.Name);
         }
 
         public async Task<IActionResult> OnPost()

@@ -15,14 +15,11 @@ namespace Employees_Manager.Models
         [Required]
         public String Name { get; set; }
 
-        
         public String Email { get; set; }
 
         [Required]
         public DateTime Dob { get; set; }
 
         public IList<Vacation> Vacations { get; set; }
-
-        public IList<Request> Requests { get; set; }
     }
 }

@@ -24,3 +24,25 @@ function removeVacation() {
         $('#vacations_container .row:last-child').remove();
     }
 }
+
+function fetchEmployee(id) {
+    $.ajax({
+        type: "GET",
+        url: "/Employees/?handler=Employee",
+        contentType: "application/json",
+        dataType: "json",
+        data: { id: id },
+        success: function (Employee) {
+            console.log(Employee);
+            $('#requestTitle').text("Request Vacation for: " + Employee.name);
+            $("#request_employee_id").val(Employee.id);
+            $('#vacation_type_select').empty();
+            Employee.vacations.forEach(function (vacation) {
+                $('#vacation_type_select').append("<option selected value='" + vacation.vacation_Type + "'>" + vacation.vacation_Type + "</option>")
+            });
+        },
+        failure: function (response) {
+            alert(response);
+        }
+    });
+}

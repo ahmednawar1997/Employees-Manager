@@ -3,14 +3,16 @@ using System;
 using Employees_Manager.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Employees_Manager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201028223212_UpdateEmployeeIdInRequest")]
+    partial class UpdateEmployeeIdInRequest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +35,12 @@ namespace Employees_Manager.Migrations
                         .IsRequired()
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
+                    b.Property<int?>("Request_Id")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("Request_Id");
 
                     b.ToTable("Employee");
                 });
@@ -44,7 +51,7 @@ namespace Employees_Manager.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("EmployeeId")
+                    b.Property<int>("Employee_Id")
                         .HasColumnType("int");
 
                     b.Property<string>("Vacation_Type")
@@ -54,8 +61,6 @@ namespace Employees_Manager.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Request_Id");
-
-                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Request");
                 });
@@ -85,11 +90,11 @@ namespace Employees_Manager.Migrations
                     b.ToTable("Vacation");
                 });
 
-            modelBuilder.Entity("Employees_Manager.Models.Request", b =>
+            modelBuilder.Entity("Employees_Manager.Models.Employee", b =>
                 {
-                    b.HasOne("Employees_Manager.Models.Employee", "Employee")
+                    b.HasOne("Employees_Manager.Models.Request", "Request")
                         .WithMany()
-                        .HasForeignKey("EmployeeId");
+                        .HasForeignKey("Request_Id");
                 });
 
             modelBuilder.Entity("Employees_Manager.Models.Vacation", b =>

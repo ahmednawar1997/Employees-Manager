@@ -19,6 +19,10 @@ namespace Employees_Manager.Pages.Employees
         }
 
         public IList<Employee> Employees{ get; set; }
+
+        [BindProperty]
+        public Request Request { get; set; }
+
         public async Task OnGet()
         {
             Employees = await _db.Employee.Include(emp => emp.Vacations).ToListAsync();
@@ -31,6 +35,25 @@ namespace Employees_Manager.Pages.Employees
             await _db.SaveChangesAsync();
 
             return RedirectToPage("Index");
+        }
+
+        public async Task<JsonResult> OnGetEmployeeAsync(int id)
+        {
+            var employee = await _db.Employee.Include(emp => emp.Vacations).SingleOrDefaultAsync(i => i.Id == id);
+            return new JsonResult(employee);
+        }
+
+
+        public async Task<IActionResult> OnPostRequestAsync()
+        {
+            if (ModelState.IsValid)
+            {
+                await _db.Request.AddAsync(Request);
+                await _db.SaveChangesAsync();
+                return RedirectToPage("Index");
+            }
+            return Page();
+            
         }
     }
 }

@@ -27,22 +27,12 @@ namespace Employees_Manager.Pages.Employees
         {
             if (ModelState.IsValid)
             {
-                Debug.WriteLine("Employee");
-
-                Debug.WriteLine(Employee.Name);
-                Debug.WriteLine(Employee.Vacations.Count());
                 await _db.Employee.AddAsync(Employee);
                 await _db.SaveChangesAsync();
                 return RedirectToPage("Index");
             }
             else
             {
-                Debug.WriteLine("Employee");
-
-                Debug.WriteLine(Employee.Name);
-                Debug.WriteLine(Employee.Vacations.Count());
-                Debug.WriteLine(Employee.Vacations.ElementAt(0).Vacation_Type);
-
                 return Page();
             }
         }
