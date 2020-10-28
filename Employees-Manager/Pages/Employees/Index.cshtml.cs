@@ -46,14 +46,12 @@ namespace Employees_Manager.Pages.Employees
 
         public async Task<IActionResult> OnPostRequestAsync()
         {
-            if (ModelState.IsValid)
-            {
-                await _db.Request.AddAsync(Request);
-                await _db.SaveChangesAsync();
-                return RedirectToPage("Index");
-            }
-            return Page();
-            
+            //Don't know if this is the right way or should I just add Employee_Id in Request instead of Employee
+            var EmployeeTemp = await _db.Employee.FindAsync(Request.Employee.Id);
+            Request.Employee = EmployeeTemp;
+            await _db.Request.AddAsync(Request);
+            await _db.SaveChangesAsync();
+            return RedirectToPage("Index");             
         }
     }
 }
