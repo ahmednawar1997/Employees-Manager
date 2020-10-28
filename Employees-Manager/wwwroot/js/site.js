@@ -7,9 +7,9 @@ var index = 2;
 $('#add_vacation_btn').click(function () {
 
     let vacationHtml = "<div class='row'>\
-        <div class='col-4 p-1'><input type = 'text' class='form-control' name = 'Employee.Vacations["+index+"].Vacation_Type' value = '' placeholder = 'Vacation Type' /></div >\
-            <div class='col-4 p-1'><input type='number' class='form-control' name='Employee.Vacations["+ index +"].Balance' value='' min='0' placeholder='Balance'/></div>\
-            <div class='col-3 p-1'><input type='number' class='form-control' name='Employee.Vacations["+ index +"].Used' value='' min='0' placeholder='Used'/></div>\
+        <div class='col-4 p-1'><input type = 'text' class='form-control' name = 'Employee.Vacations["+index+"].Vacation_Type' value = '' placeholder = 'Vacation Type' required/></div >\
+            <div class='col-4 p-1'><input type='number' class='form-control' name='Employee.Vacations["+ index +"].Balance' value='0' min='0' placeholder='Balance'/></div>\
+            <div class='col-3 p-1'><input type='number' class='form-control' name='Employee.Vacations["+ index +"].Used' value='0' min='0' placeholder='Used'/></div>\
             <div class='col-1'></div>\
         </div>";
     index++;
