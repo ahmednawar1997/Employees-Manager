@@ -12,65 +12,63 @@
 
 
         <div class="col-12 border p-3 mt-3">
-            <form action="/" method="post">
-                @if (Model.Employees.Count() > 0)
-                {
-                    <table class="table table-striped border">
-                        <tr class="table-secondary">
-                            <th>
-                                <label asp-for="Employees.FirstOrDefault().Name"></label>
-                            </th>
-                            <th>
-                                <label asp-for="Employees.FirstOrDefault().Email"></label>
-                            </th>
-                            <th>
-                                <label asp-for="Employees.FirstOrDefault().Vacations"></label>
-                            </th>
-                            <th>
-                                <label ></label>
-                            </th>
-                        </tr>
-
-                        @foreach(var employee in Model.Employees)
-                        {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(name => employee.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(Email => employee.Email)
-                        </td>
-                        <td>
-
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Vacations
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                   @foreach(var vac in employee.Vacations)
-                                    {
-                                    <p class="dropdown-item">@vac.Vacation_Type Balance: @vac.Balance</p>
-                                    }
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <button class="btn btn-danger btn-sm">Delete</button>
-                            <a asp-page="Edit" asp-route-id="@employee.Id"class="btn btn-secondary btn-sm text-white">Edit</a>
-                        </td>
+            @if (Model.Employees.Count() > 0)
+            {
+                <table class="table table-striped border">
+                    <tr class="table-secondary">
+                        <th>
+                            <label asp-for="Employees.FirstOrDefault().Name"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Employees.FirstOrDefault().Email"></label>
+                        </th>
+                        <th>
+                            <label asp-for="Employees.FirstOrDefault().Vacations"></label>
+                        </th>
+                        <th>
+                            <label></label>
+                        </th>
                     </tr>
 
-                        }
+                    @foreach (var employee in Model.Employees)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(name => employee.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(Email => employee.Email)
+                            </td>
+                            <td>
 
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Vacations
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        @foreach (var vac in employee.Vacations)
+                                        {
+                                            <p class="dropdown-item">@vac.Vacation_Type Balance: @vac.Balance</p>
+                                        }
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <form class="d-inline-block" asp-page-handler="Delete" asp-route-id="@employee.Id" method="post">
+                                    <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                </form>
+                                <a asp-page="Edit" asp-route-id="@employee.Id" class="btn btn-secondary btn-sm text-white">Edit</a>
+                            </td>
+                        </tr>
 
+                    }
 
-                    </table>
-                }
-                else
-                {
-                    <h6>No Employees </h6>
-                }
-                </form>
-            </div>
+                </table>
+            }
+            else
+            {
+                <h6>No Employees </h6>
+            }
         </div>
     </div>
+</div>

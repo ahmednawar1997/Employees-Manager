@@ -56,14 +56,14 @@ button.accept-policy {
 html {
     position: relative;
     min-height: 100%;
-    /*background: rgb(242,242,242);
-    background: linear-gradient(117deg, rgba(242,242,242,1) 0%, rgba(255,255,255,1) 48%, rgba(242,242,242,1) 100%);*/
+
 }
 
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-
+    /*background: rgb(242,242,242);
+    background: linear-gradient(117deg, rgba(242,242,242,1) 0%, rgba(255,255,255,1) 48%, rgba(242,242,242,1) 100%);*/
 }
 .footer {
   position: absolute;

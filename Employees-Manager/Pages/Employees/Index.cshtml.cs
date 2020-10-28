@@ -13,7 +13,6 @@ namespace Employees_Manager.Pages.Employees
     {
         private readonly ApplicationDbContext _db;
 
-
         public IndexModel(ApplicationDbContext _db)
         {
             this._db = _db;
@@ -22,13 +21,16 @@ namespace Employees_Manager.Pages.Employees
         public IList<Employee> Employees{ get; set; }
         public async Task OnGet()
         {
-
             Employees = await _db.Employee.Include(emp => emp.Vacations).ToListAsync();
-            //Employees = await _db.Employee.ToListAsync();
+        }
 
-           //System.Diagnostics.Debug.WriteLine(Employees.Count());
-           // System.Diagnostics.Debug.WriteLine(Employees.ElementAt(0).Vacations.Count());
+        public async Task<IActionResult> OnPostDelete(int id)
+        {
+            var employee = await _db.Employee.FindAsync(id);
+            _db.Employee.Remove(employee);
+            await _db.SaveChangesAsync();
 
+            return RedirectToPage("Index");
         }
     }
 }

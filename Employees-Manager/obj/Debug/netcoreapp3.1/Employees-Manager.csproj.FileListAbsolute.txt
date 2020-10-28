@@ -19,7 +19,6 @@ E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Em
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Employees-Manager.RazorCoreGenerate.cache
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Razor\Pages\Index.cshtml.g.cs
-E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Razor\Pages\Privacy.cshtml.g.cs
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_Layout.cshtml.g.cs
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_ValidationScriptsPartial.cshtml.g.cs
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Razor\Pages\_ViewImports.cshtml.g.cs
