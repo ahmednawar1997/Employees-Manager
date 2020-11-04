@@ -446,3 +446,12 @@ E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\ru
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Employees-Manager.csproj.CoreCompileInputs.cache
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Employees-Manager.MvcApplicationPartsAssemblyInfo.cs
 E:\ahmed\Projects\Employees-Manager\Employees-Manager\obj\Debug\netcoreapp3.1\Employees-Manager.MvcApplicationPartsAssemblyInfo.cache
+E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Models.exe
+E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Models.dll
+E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Models.pdb
+E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Data.exe
+E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Data.dll
+E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Data.pdb
+E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Services.exe
+E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Services.dll
+E:\ahmed\Projects\Employees-Manager\Employees-Manager\bin\Debug\netcoreapp3.1\Services.pdb

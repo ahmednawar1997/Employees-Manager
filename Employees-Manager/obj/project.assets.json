@@ -2812,6 +2812,58 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": "3.1.9",
+          "Microsoft.EntityFrameworkCore": "3.1.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "3.1.9",
+          "Microsoft.EntityFrameworkCore.Sqlite": "3.1.9",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
+          "Models": "1.0.0",
+          "Pomelo.EntityFrameworkCore.MySql": "3.2.3"
+        },
+        "compile": {
+          "bin/placeholder/Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Data.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Models.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Data": "1.0.0",
+          "Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -8962,17 +9014,35 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "Data/1.0.0": {
+      "type": "project",
+      "path": "../Data/Data.csproj",
+      "msbuildProject": "../Data/Data.csproj"
+    },
+    "Models/1.0.0": {
+      "type": "project",
+      "path": "../Models/Models.csproj",
+      "msbuildProject": "../Models/Models.csproj"
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/Services.csproj",
+      "msbuildProject": "../Services/Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Data >= 1.0.0",
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 3.1.9",
       "Microsoft.EntityFrameworkCore >= 3.1.9",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.9",
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.1.9",
       "Microsoft.EntityFrameworkCore.Tools >= 3.1.9",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.1.4",
-      "Pomelo.EntityFrameworkCore.MySql >= 3.2.3"
+      "Models >= 1.0.0",
+      "Pomelo.EntityFrameworkCore.MySql >= 3.2.3",
+      "Services >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -9000,7 +9070,17 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "E:\\ahmed\\Projects\\Employees-Manager\\Data\\Data.csproj": {
+              "projectPath": "E:\\ahmed\\Projects\\Employees-Manager\\Data\\Data.csproj"
+            },
+            "E:\\ahmed\\Projects\\Employees-Manager\\Models\\Models.csproj": {
+              "projectPath": "E:\\ahmed\\Projects\\Employees-Manager\\Models\\Models.csproj"
+            },
+            "E:\\ahmed\\Projects\\Employees-Manager\\Services\\Services.csproj": {
+              "projectPath": "E:\\ahmed\\Projects\\Employees-Manager\\Services\\Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
