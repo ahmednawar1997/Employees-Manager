@@ -13,5 +13,10 @@ namespace Employees_Manager.Data.EFCore
         {
 
         }
+
+        public override Task<Request> Update(Request entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

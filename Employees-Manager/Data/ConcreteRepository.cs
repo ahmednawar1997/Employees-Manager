@@ -50,12 +50,6 @@ namespace Employees_Manager.Data
             return await _db.Set<TEntity>().Include(filter).ToListAsync();
         }
 
-        public async Task<TEntity> Update(TEntity entity)
-        {
-            _db.Entry(entity).State = EntityState.Modified;
-            await _db.SaveChangesAsync();
-            return entity;
-        }
 
         public async Task<bool> Exists(int id)
         {
@@ -64,5 +58,7 @@ namespace Employees_Manager.Data
             if (emp != null) return true;
             return false;
         }
+
+        public abstract Task<TEntity> Update(TEntity entity);
     }
 }

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Employees_Manager.Data;
+using Employees_Manager.Data.EFCore;
 using Employees_Manager.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -12,19 +14,19 @@ namespace Employees_Manager.Pages.Employees
     public class EditModel : PageModel
     {
 
-        private readonly ApplicationDbContext _db;
-
         [BindProperty]
         public Employee Employee { set; get; }
 
-        public EditModel(ApplicationDbContext _db)
+        private readonly IRepository<Employee> _empRepository;
+
+        public EditModel(EmployeeRepository _empRepository)
         {
-            this._db = _db;
+            this._empRepository = _empRepository;
         }
         public async Task OnGet(int id)
         {
 
-            Employee = await _db.Employee.Include(emp => emp.Vacations).SingleOrDefaultAsync(i => i.Id == id);
+            Employee = await _empRepository.Get(id, emp => emp.Vacations);
         }
 
         public async Task<IActionResult> OnPost()
@@ -32,15 +34,7 @@ namespace Employees_Manager.Pages.Employees
             if (ModelState.IsValid)
             {
 
-                var EmployeeTemp = await _db.Employee.Include(emp => emp.Vacations).SingleOrDefaultAsync(i => i.Id == Employee.Id);
-
-                EmployeeTemp.Name = Employee.Name;
-                EmployeeTemp.Email = Employee.Email;
-                EmployeeTemp.Dob = Employee.Dob;
-                EmployeeTemp.Vacations = Employee.Vacations;
-
-
-                await _db.SaveChangesAsync();
+                await _empRepository.Update(Employee);
                 return RedirectToPage("Index");
             }
              return Page();
