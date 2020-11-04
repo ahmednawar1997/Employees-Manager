@@ -27,7 +27,7 @@ namespace Employees_Manager.Pages.Employees
 
         public async Task<IActionResult> OnPostAcceptRequest(int req_id)
         {
-            var Request = await _db.Request.Include(req => req.Employee).SingleOrDefaultAsync(req =>req.Request_Id == req_id);
+            var Request = await _db.Request.Include(req => req.Employee).SingleOrDefaultAsync(req =>req.Id == req_id);
 
             var EmployeeTemp = await _db.Employee.Include(emp => emp.Vacations).SingleOrDefaultAsync(emp => emp.Id == Request.Employee.Id);
 

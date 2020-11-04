@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace Employees_Manager.Models
 {
-    public class Request
+    public class Request : IEntity
     {
 
         [Key]
-        public int Request_Id { get; set; }
+        public int Id { get; set; }
         public Employee Employee{ get; set; }
         public String Vacation_Type { get; set; }
         public int Value { get; set; }
-
     }
 }

@@ -40,7 +40,7 @@ namespace Employees_Manager.Migrations
 
             modelBuilder.Entity("Employees_Manager.Models.Request", b =>
                 {
-                    b.Property<int>("Request_Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -53,7 +53,7 @@ namespace Employees_Manager.Migrations
                     b.Property<int>("Value")
                         .HasColumnType("int");
 
-                    b.HasKey("Request_Id");
+                    b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
 
@@ -62,7 +62,7 @@ namespace Employees_Manager.Migrations
 
             modelBuilder.Entity("Employees_Manager.Models.Vacation", b =>
                 {
-                    b.Property<int>("Vacation_Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -78,7 +78,7 @@ namespace Employees_Manager.Migrations
                     b.Property<string>("Vacation_Type")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("Vacation_Id");
+                    b.HasKey("Id");
 
                     b.HasIndex("EmployeeId");
 
