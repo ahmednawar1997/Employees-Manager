@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Employees_Manager.Data;
-using Employees_Manager.Data.EFCore;
 using Employees_Manager.Models;
+using Employees_Manager.Services;
+using Employees_Manager.Services.ServicesImpl;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 
 namespace Employees_Manager.Pages.Employees
 {
@@ -17,16 +16,16 @@ namespace Employees_Manager.Pages.Employees
         [BindProperty]
         public Employee Employee { set; get; }
 
-        private readonly IRepository<Employee> _empRepository;
+        private readonly IService<Employee> _empService;
 
-        public EditModel(EmployeeRepository _empRepository)
+        public EditModel(EmployeeService _empService)
         {
-            this._empRepository = _empRepository;
+            this._empService = _empService;
         }
         public async Task OnGet(int id)
         {
 
-            Employee = await _empRepository.Get(id, emp => emp.Vacations);
+            Employee = await _empService.Get(id, emp => emp.Vacations);
         }
 
         public async Task<IActionResult> OnPost()
@@ -34,7 +33,7 @@ namespace Employees_Manager.Pages.Employees
             if (ModelState.IsValid)
             {
 
-                await _empRepository.Update(Employee);
+                await _empService.Update(Employee);
                 return RedirectToPage("Index");
             }
              return Page();

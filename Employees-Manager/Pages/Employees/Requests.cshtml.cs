@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Employees_Manager.Models;
+using Employees_Manager.Services;
+using Employees_Manager.Services.ServicesImpl;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -11,25 +13,26 @@ namespace Employees_Manager.Pages.Employees
 {
     public class RequestsModel : PageModel
     {
-        private readonly ApplicationDbContext _db;
-
-        public RequestsModel(ApplicationDbContext _db)
+        private readonly IService<Employee> _empService;
+        private readonly IService<Request> _reqService;
+        public RequestsModel(EmployeeService _empService, RequestService _reqService)
         {
-            this._db = _db;
+            this._empService = _empService;
+            this._reqService = _reqService;
         }
 
         public IList<Request> Requests { get; set; }
 
         public async Task OnGet()
         {
-            Requests = await _db.Request.Include(req => req.Employee).ToListAsync();
+            Requests = await _reqService.GetAll(req => req.Employee);
         }
 
         public async Task<IActionResult> OnPostAcceptRequest(int req_id)
         {
-            var Request = await _db.Request.Include(req => req.Employee).SingleOrDefaultAsync(req =>req.Id == req_id);
+            var Request = await _reqService.Get(req_id, req => req.Employee);
 
-            var EmployeeTemp = await _db.Employee.Include(emp => emp.Vacations).SingleOrDefaultAsync(emp => emp.Id == Request.Employee.Id);
+            var EmployeeTemp = await _empService.Get(Request.Employee.Id, emp => emp.Vacations);
 
             foreach (Vacation vacation in EmployeeTemp.Vacations)
             {
@@ -37,12 +40,10 @@ namespace Employees_Manager.Pages.Employees
                 {
                     vacation.Balance -= Request.Value;
                     vacation.Used += Request.Value;
-                    _db.Request.Remove(Request);
+                    await _reqService.Delete(Request.Id);
                     break;
                 }
             }
-
-            await _db.SaveChangesAsync();
 
             return RedirectToPage("Index");
         }

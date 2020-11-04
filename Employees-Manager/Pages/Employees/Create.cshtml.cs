@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Employees_Manager.Data;
-using Employees_Manager.Data.EFCore;
 using Employees_Manager.Models;
+using Employees_Manager.Services;
+using Employees_Manager.Services.ServicesImpl;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -18,11 +18,11 @@ namespace Employees_Manager.Pages.Employees
         [BindProperty]
         public Employee Employee { set; get; }
 
-        private readonly IRepository<Employee> _empRepository;
+        private readonly IService<Employee> _empService;
 
-        public CreateModel(EmployeeRepository _empRepository)
+        public CreateModel(EmployeeService _empService)
         {
-            this._empRepository = _empRepository;
+            this._empService = _empService;
         }
 
 
@@ -33,7 +33,7 @@ namespace Employees_Manager.Pages.Employees
         {
             if (ModelState.IsValid)
             {
-                await _empRepository.Add(Employee);
+                await _empService.Add(Employee);
                 return RedirectToPage("Index");
             }
             else

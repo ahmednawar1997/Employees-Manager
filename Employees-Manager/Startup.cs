@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Employees_Manager.Data.EFCore;
 using Employees_Manager.Models;
+using Employees_Manager.Services.ServicesImpl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,7 +31,9 @@ namespace Employees_Manager
 
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddScoped<EmployeeRepository>();
-            services.AddScoped<RequestRepository>();
+            services.AddScoped<RequestRepository>(); 
+            services.AddScoped<RequestService>();
+            services.AddScoped<EmployeeService>();
 
         }
 
