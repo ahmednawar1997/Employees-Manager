@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 using Employees_Manager.Data.EFCore;
 using Employees_Manager.Models;
+using Employees_Manager.Strategy_Factory;
+
 using Employees_Manager.Services.ServicesImpl;
 using Employees_Manager.Startup_Strategies;
 using Microsoft.AspNetCore.Builder;
@@ -12,7 +11,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace Employees_Manager
 {
@@ -24,8 +22,6 @@ namespace Employees_Manager
         }
 
         public IConfiguration Configuration { get; }
-        public IStartupStrategy startupStrategy{ get; }
-
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -43,17 +39,8 @@ namespace Employees_Manager
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                new DevelopmentStrategy().Configure(app, env);
+            StrategyFactory.getStrategy(env).Configure(app, env);
 
-            }
-            else
-            {
-                new ProductionStrategy().Configure(app, env);
-            }
-
-           
         }
     }
 }
